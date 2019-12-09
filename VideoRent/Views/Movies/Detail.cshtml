@@ -1,0 +1,19 @@
+﻿@model VideoRent.Models.Movie
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Detail</h2>
+<ul class="list-group">
+    <li class="list-group-item">@Model.Name</li>
+    <li class="list-group-item">Added Date : @Model.DateAdded.ToString().Split()[0]</li>
+    <li class="list-group-item">Released Date : @Model.ReleaseDate.ToString().Split()[0]</li>
+    <li class="list-group-item">Number in stock : @Model.NumberInStock.ToString().Split()[0]</li>
+</ul>
+
+
+
+
+

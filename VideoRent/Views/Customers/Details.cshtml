@@ -1,0 +1,24 @@
+﻿@model VideoRent.Models.Customer
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h2>Detail</h2>
+<h2>@Model.Name</h2>
+<ul class="list-group">
+    <li class="list-group-item">@Model.MembershipType.Name</li>
+
+    @if (Model.Birthdate.HasValue)
+    {
+        <li class="list-group-item">BirthDate: @Model.Birthdate.ToString().Split()[0]</li>
+    }
+    @*else
+    {
+        <li class="list-group-item">No Date</li>
+    }*@
+
+</ul>
+

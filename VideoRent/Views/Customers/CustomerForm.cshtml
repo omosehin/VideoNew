@@ -1,0 +1,41 @@
+﻿@model VideoRent.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+    <h2>New Customer</h2>
+
+
+@*create is the action
+    normal input can be used here
+*@
+@using (Html.BeginForm("Save", "Customers"))
+{
+    <div>
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div>
+        @*<label for="Birthdate"> Date Of Birth</label> ,{0:d MMM yyyy} is standard fromat string in c#*@
+
+        @Html.LabelFor(m => m.Customer.Birthdate)
+        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div>
+
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Customer.MembershipTypeId)
+    </div>
+    <div class="form-check">
+        <label class="form-check-label" for="inlineFormCheck">
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedNewsLetter) Subscribed to Newsletter
+        </label>
+    </div>
+    @Html.HiddenFor(m=>m.Customer.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
