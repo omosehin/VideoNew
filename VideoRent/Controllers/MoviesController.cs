@@ -37,7 +37,7 @@ namespace VideoRent.Controllers
                 Genres = genre
             };
 
-            return View("CustomerForm", viewModel);
+            return View("MovieForm", viewModel);
         }
 
         [HttpPost]
@@ -90,7 +90,7 @@ namespace VideoRent.Controllers
                 Movie = movie
             };
 
-            return View("CustomerForm",viewModel);
+            return View("MovieForm",viewModel);
         }
     }
 
