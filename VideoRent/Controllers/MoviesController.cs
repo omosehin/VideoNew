@@ -41,27 +41,39 @@ namespace VideoRent.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(Movie movie)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save( Movie movie)
         {
-            if (movie.Id == 0)
+           
+            if (!ModelState.IsValid)
             {
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
+            
+            if (movie.Id == 0 )
+            {
+                movie.ReleaseDate = DateTime.Now;
                 _context.Movies.Add(movie);
             }
             else
             {
                 var movieInDb = _context.Movies.Single(c => c.Id == movie.Id);
                 movieInDb.Name = movie.Name;
+                movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
-                movieInDb.DateAdded = movie.DateAdded;
-                _context.Movies.Add(movie);
-                _context.SaveChanges();
+                //_context.Movies.Add(movie);
             }
+                _context.SaveChanges();
                 return RedirectToAction("Index", "Movies");
         }
         public ActionResult Index()
         {
-            var movie = _context.Movies.Include(c => c.Genre).ToList();
+            var movie = _context.Movies.Include(c => c.Genre).ToList().OrderBy(c=>c.Name);
             return View(movie);
         }
 
@@ -84,10 +96,9 @@ namespace VideoRent.Controllers
             {
                 return HttpNotFound();
             }
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
                 Genres = genre,
-                Movie = movie
             };
 
             return View("MovieForm",viewModel);

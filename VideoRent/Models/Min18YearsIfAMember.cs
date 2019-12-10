@@ -10,13 +10,13 @@ namespace VideoRent.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var customer = (Customer)validationContext.ObjectInstance; //we cast it because ObjectInstance is an object
+            var customer = (Customer)validationContext.ObjectInstance; //we cast to object it because ObjectInstance is an object
             if(customer.MembershipTypeId == MembershipType.Unknown
                 ||customer.MembershipTypeId == MembershipType.PayAsYouGo) //1 is defined in our db
             {
                 return ValidationResult.Success;
             }
-            if(customer.Birthdate == null)
+            if(customer.Birthdate == null) //birthdate is not null at the on set because they set to default values
             {
                 return new ValidationResult("Birthdate is required.");
             }

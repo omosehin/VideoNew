@@ -36,6 +36,7 @@ namespace vidil.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer) //Model binding,MVC binds request data to this object
         {
             //validation
