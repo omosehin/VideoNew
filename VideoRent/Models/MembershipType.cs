@@ -13,5 +13,7 @@ namespace VideoRent.Models
         public short SignUpFee { get; set; } //short becuse max fee is 32k
         public byte DurationInMonths { get; set; }
         public byte DiscountRate { get; set; }
+        public static readonly byte Unknown = 0; //it cannot be changed somewhere else
+        public static readonly byte PayAsYouGo = 1; //it cannot be changed somewhere else
     }
 }

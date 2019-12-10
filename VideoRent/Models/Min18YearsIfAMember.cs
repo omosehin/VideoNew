@@ -11,7 +11,8 @@ namespace VideoRent.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var customer = (Customer)validationContext.ObjectInstance; //we cast it because ObjectInstance is an object
-            if(customer.MembershipTypeId == 0||customer.MembershipTypeId == 1) //1 is defined in our db
+            if(customer.MembershipTypeId == MembershipType.Unknown
+                ||customer.MembershipTypeId == MembershipType.PayAsYouGo) //1 is defined in our db
             {
                 return ValidationResult.Success;
             }

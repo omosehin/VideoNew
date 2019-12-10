@@ -23,5 +23,7 @@ namespace VideoRent.Models
 
         public byte MembershipTypeId { get; set; }
 
+       
+
     }
 }

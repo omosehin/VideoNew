@@ -42,8 +42,8 @@ a .text-white{
 .btn.btn-primary>a {
     color: white !important;
 }
-.field-validation-error{
-    color:red;
+.validation-summary-errors span,.field-validation-error {
+    color: red;
 }
 .input-validation-error{
     border:2px solid red;

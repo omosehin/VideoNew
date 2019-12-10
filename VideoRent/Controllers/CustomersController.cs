@@ -28,6 +28,7 @@ namespace vidil.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(), //wen we instantiate this customer here it value will be set to their default values this will resolve error of Id being validated
                 MembershipTypes = membershipTypes
                 
             };
