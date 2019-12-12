@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/VideoRent/Views/Movies/Delete.cshtml
+/VideoRent/Views/Movies/Edit.cshtml

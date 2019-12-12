@@ -28,6 +28,20 @@ namespace VideoRent.Controllers
 
         }
 
+
+        public ActionResult Index()
+        {
+            var movie = _context.Movies.Include(c => c.Genre).ToList().OrderBy(c => c.Name);
+
+            if(User.IsInRole("CanManageMovies"))
+            {
+                return View("ReadOnlyList",movie);
+            }
+            else
+            {
+                return View("List",movie);
+            }
+        }
         public ActionResult New()
         {
             var genre = _context.Genres.ToList();
@@ -71,11 +85,7 @@ namespace VideoRent.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Movies");
         }
-        public ActionResult Index()
-        {
-            var movie = _context.Movies.Include(c => c.Genre).ToList().OrderBy(c=>c.Name);
-            return View(movie);
-        }
+       
 
         public ActionResult Detail(int id)
         {

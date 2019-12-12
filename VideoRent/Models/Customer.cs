@@ -18,7 +18,7 @@ namespace VideoRent.Models
         public DateTime? Birthdate { get; set; } //DateTime is not nullable so we have to make it nullable
 
         public bool IsSubscribedNewsLetter { get; set; }
-       [Display(Name ="Membership Type")]
+      // [Display(Name ="Membership Type")]
         public MembershipType MembershipType { get; set; }
 
         public byte MembershipTypeId { get; set; }

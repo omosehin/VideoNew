@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VideoRent.Models.Movie>
+
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+<h2>Movie</h2>
+<button class="btn btn-primary">@Html.ActionLink("Add New Movie", "New", "Movies")</button>
+
+@if (!Model.Any())
+{
+    <p class="center-block">No Movie</p>
+}
+else
+{
+    foreach (var movie in Model)
+    {
+        <div class="d-flex">
+            <div>@Html.ActionLink(movie.Name, "Detail", "Movies", new { id = movie.Id }, null)</div>
+            <div>
+                @movie.Genre.Name
+                <button class="btn btn-primary"> @Html.ActionLink("Edit", "Edit", "Movies", new { id = movie.Id }, null)</button>
+            </div>
+        </div>
+
+
+
+
+    }
+}
+

@@ -67,6 +67,8 @@ namespace vidil.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+
+    
             public ActionResult Index()
         {
 

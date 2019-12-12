@@ -29,9 +29,14 @@ textarea {
     box-shadow: 0 0 2px 0px grey;
     padding: 2rem;
 }
+.d-flex-2 {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+}
 
-    .d-flex div {
-    }
+    
 
     .d-flex .customer {
         font-weight: bolder;
